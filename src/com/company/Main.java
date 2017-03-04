@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -30,12 +32,39 @@ public class Main {
         // right number of parameters.
         //
 
+        double centimeters = calcFeetAndInchesToCentimeters(6,8);
+        System.out.println(centimeters);
+
+
+        System.out.println(calcFeetAndInchesToCentimeters(157));
+
+
+        
           }
 
-          //todo create method to calcFeetAndInchesToCentimeters first parameter is feet second parameter is inch
-                    // if  feet < 0 or inch < 0 or > 12 then return 1
-                    // if parameter is valid then convert both parameters into cm
+    private static double calcFeetAndInchesToCentimeters(double feet, double inches) {
+        if(feet <0 || inches <0 || inches >12){
+            System.out.println("invalid parameters");
+            return -1;
+        }
 
-    
+        double centimeters = feet * 12 * 2.54;
+        centimeters += (inches * 2.54);
+        System.out.println("centimeters conversion = " + centimeters + "cm");
+        return centimeters;
+    }
+
+
+    private static double calcFeetAndInchesToCentimeters(double inches) {
+        if(inches < 0){
+            return -1;
+        }
+        double feet = inches/12;
+        double remaindingInches = inches % 12;
+
+        System.out.println("inches is equal to " + feet + " feet and " + remaindingInches + " inches");
+        return calcFeetAndInchesToCentimeters(feet, remaindingInches);
+    }
+
 
 }
